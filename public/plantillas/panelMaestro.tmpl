@@ -1,0 +1,71 @@
+{{define "panelMaestro"}}
+{{template "cabezera"}}
+  <!-- incio de tablas grupos existentes-->
+  <main class="container mx-auto content-center">
+    <section class="rounded-sm grid justify-items-center p-5">
+      <!-- inico tabla-->
+      <table class=" border-collapse border border-slate-500 bg-white dark:bg-slate-800 text-sm shadow-sm">
+        <thead class="bg-slate-50 dark:bg-slate-700">
+          <tr>
+            <th
+              class="w-64 border  border-slate-300 dark:border-slate-600 font-semibold p-4  text-slate-900 dark:text-slate-200 text-left">
+              ID</th>
+            <th
+              class="w-64 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
+              Clave</th>
+
+            <th
+              class="w-64 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
+              Materia</th>
+
+            <th
+              class="w-64 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
+              Maestro</th>
+
+            <th
+              class="w-64 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
+              Periodo </th>
+
+            <th
+              class="w-64 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
+              carrera </th>
+            <th
+              class="w-64 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
+              Acciones </th>
+          </tr>
+        </thead>
+        <!--fin tabalas -->
+
+        <!--inico cuerpo de tablas-->
+        <tbody>
+          {{range.}}
+          <tr>
+            <!-- datos-->
+            <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">{{.Id}}
+            </td>
+            <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">{{.Clave}}
+            </td>
+            <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+              {{.Maestro}}</td>
+            <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+              {{.Materia}}</td>
+            <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+              {{.Periodo}}</td>
+            <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+              {{.Carrera}}</td>
+
+            <!--Botones-->
+            <td class="justify-center ">
+              <button class="bg-slate-500	hover:bg-slate-600 text-white rounded-full p-2 px-3 py-2 text-sm font-medium m-3">Lista  </button>
+            </td>
+          </tr>
+          {{end}}
+        </tbody>
+        <!-- fin de cuerpo tablas -->
+      </table>
+    </section>
+    <!--final de sec-->
+  </main>
+  <!--final main -->
+  {{template "pie"}}
+  {{end}}
