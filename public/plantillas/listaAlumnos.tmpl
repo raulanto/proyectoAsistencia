@@ -1,0 +1,64 @@
+{{define "listaAlumnos"}}
+{{template "cabezera"}}
+
+<main>
+    <!-- inico tabla-->
+    <table class=" border-collapse border border-slate-500 bg-white dark:bg-slate-800 text-sm shadow-sm">
+        <thead class="bg-slate-50 dark:bg-slate-700">
+            <tr>
+                <th
+                    class="w-64 border  border-slate-300 dark:border-slate-600 font-semibold p-4  text-slate-900 dark:text-slate-200 text-left">
+                    ID</th>
+                <th
+                    class="w-64 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
+                    Grupo</th>
+
+                <th
+                    class="w-64 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
+                    Nombre</th>
+
+                <th
+                    class="w-64 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
+                    Apellido Paterno</th>
+
+                <th
+                    class="w-64 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
+                    Apellido Materno </th>
+                <th
+                    class="w-64 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
+                    Carrera </th>
+
+        </thead>
+        <!--fin tabalas -->
+
+        <!--inico cuerpo de tablas-->
+        <tbody>
+            {{range.}}
+            <tr>
+                <!-- datos-->
+                <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+                    {{.Id}}
+                </td>
+                <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+                    {{.Clave}}
+                </td>
+                <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+                    {{.Maestro}}</td>
+                <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+                    {{.Materia}}</td>
+                <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+                    {{.Periodo}}</td>
+                <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+                    {{.Carrera}}</td>
+
+                <!--Botones-->
+
+            </tr>
+            {{end}}
+        </tbody>
+        <!-- fin de cuerpo tablas -->
+    </table>
+
+</main>
+{{template "pie"}}
+{{end}}

@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"text/template"
 
-	bd "sistema/public/conecion"
+	"sistema/public/conecion"
 	"sistema/public/grupo"
 )
 
@@ -16,6 +16,7 @@ func main() {
 
 	http.HandleFunc("/index", Inicio)
 	http.HandleFunc("/panelMaestro", PanelMaestro)
+	http.HandleFunc("/listaAlumnos",ListaAlumnos)
 	log.Print("Servidor Corriendo..")
 	http.ListenAndServe(":5600", nil)
 }
@@ -26,7 +27,7 @@ func Inicio(w http.ResponseWriter, r *http.Request) {
 
 func PanelMaestro(w http.ResponseWriter, r *http.Request) {
 
-	conexionEstablecida := bd.ConexionDB()
+	conexionEstablecida := conecion.ConexionDB()
 	registros, err := conexionEstablecida.Query("select g.ID,g.clave,ma.nombre ,m.nombre, p.nombre,c.nombre from grupo g inner join materia m on g.fk_materia=m.ID inner join maestro ma on g.fk_maestro = ma.ID inner join periodo p on g.fk_periodo = p.ID inner join  carrera c on g.fk_carrera = c.ID")
 
 	if err != nil {
@@ -34,7 +35,9 @@ func PanelMaestro(w http.ResponseWriter, r *http.Request) {
 		panic(err.Error())
 	}
 
+	//se inicia una estructura
 	grupoT := grupo.Grupo{}
+	//se incializa un areglo de tipo estrucutra 
 	ArregloGrupo := []grupo.Grupo{}
 	for registros.Next() {
 		var id int
@@ -56,4 +59,9 @@ func PanelMaestro(w http.ResponseWriter, r *http.Request) {
 		ArregloGrupo = append(ArregloGrupo, grupoT)
 	}
 	plantillas.ExecuteTemplate(w, "panelMaestro", ArregloGrupo)
+}
+
+
+func ListaAlumnos(w http.ResponseWriter, r *http.Request)  {
+	plantillas.ExecuteTemplate(w, "listaAlumnos", nil)
 }
